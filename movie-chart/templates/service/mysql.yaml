@@ -1,0 +1,13 @@
+# External Database service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    apps: mysql-service
+  name: mysql-service
+  namespace: default
+spec:
+  externalName: {{ .Values.database.endpoint }}
+  selector:
+    app: mysql-service
+  type: ExternalName
